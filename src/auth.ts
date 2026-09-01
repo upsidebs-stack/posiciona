@@ -11,6 +11,10 @@ import { accounts, sessions, users, verificationTokens } from '@/db/schema';
 // sign-in method and the one the Fase 0 acceptance criterion tests.
 const providers = [
   Resend({
+    // next-auth's env-var auto-inference looks for AUTH_RESEND_KEY, but
+    // PLANO.md section 17 names it RESEND_API_KEY — pass it explicitly so
+    // that naming stays authoritative. See DECISIONS.md.
+    apiKey: process.env.RESEND_API_KEY,
     from: process.env.MAIL_FROM,
   }),
   ...(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET
