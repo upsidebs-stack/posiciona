@@ -12,7 +12,7 @@ export default function MarketingPage() {
         Posiciona maps your local market on eight attributes built from public data — hours,
         pricing, service types, and your competitors&apos; own websites. Not review volume.
       </p>
-      <Button size="lg" render={<Link href="/login">See my free map</Link>} />
+      <Button size="lg" nativeButton={false} render={<Link href="/login">See my free map</Link>} />
     </div>
   );
 }
