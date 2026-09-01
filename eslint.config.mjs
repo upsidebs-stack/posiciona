@@ -12,7 +12,16 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Netlify's local build/deploy output — not project source.
+    ".netlify/**",
   ]),
+  {
+    rules: {
+      // Destructuring to omit fields ("const { secret, ...rest } = x")
+      // legitimately leaves the omitted names unused.
+      "@typescript-eslint/no-unused-vars": ["warn", { ignoreRestSiblings: true }],
+    },
+  },
 ]);
 
 export default eslintConfig;
